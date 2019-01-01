@@ -4,7 +4,7 @@ app = Flask(__name__)
 def parse_request():
     r_body = request.get_json()
     print(r_body)
-    return 'Received !' # response to your request.
+    return 'Received!' # response to your request.
 
 # run the app.
 if __name__ == "__main__":
