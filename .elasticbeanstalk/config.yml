@@ -1,5 +1,0 @@
-branch-defaults:
-  default:
-    environment: workerTest-env
-global:
-  profile: eb-cli
