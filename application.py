@@ -1,3 +1,5 @@
+import scraper
+
 import logging
 import logging.handlers
 
@@ -30,6 +32,8 @@ def parse_request():
     try:
       request_body = request.get_json()
       logger.info("Received message: %s" % request_body)
+      scraper.run()
+      logger.info("Scraper ran successfully after receiving %s" % request_body)
     except (BadRequest):
       logger.warning('Error retrieving request body for async work.')
     response = 'received!'
