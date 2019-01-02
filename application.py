@@ -22,6 +22,7 @@ handler.setFormatter(formatter)
 # add Handler to Logger
 logger.addHandler(handler)
 
+# Elastic Beanstalk looks for application callable by default
 application = Flask(__name__)
 @application.route('/', methods=['POST'])
 def parse_request():
@@ -34,7 +35,7 @@ def parse_request():
     response = 'received!'
   else:
     response = 'welcome!'
-    return response # response to your request.
+    return response
 
 # run the app.
 if __name__ == "__main__":
