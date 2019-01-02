@@ -35,7 +35,7 @@ def parse_request():
     response = 'received!'
   else:
     response = 'welcome!'
-    return response
+  return response
 
 # run the app.
 if __name__ == "__main__":
