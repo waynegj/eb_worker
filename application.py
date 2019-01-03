@@ -1,12 +1,13 @@
+sys.path.append(os.path.dirname(__file__))
 
 import logging
 import sys
 import logging.handlers
 
+import scraper
 from flask import Flask, request
 
-sys.path.append('/opt/python/current/app')
-import scraper
+
 
 # Create logger
 logger = logging.getLogger(__name__)
@@ -27,7 +28,6 @@ handler.setFormatter(formatter)
 logger.addHandler(handler)
 
 # Elastic Beanstalk looks for application callable by default
-
 application = Flask(__name__)
 @application.route('/', methods=['POST'])
 def parse_request():
