@@ -1,12 +1,13 @@
+
 import sys
+import os
 sys.path.append(os.path.dirname(__file__))
 
 import logging
 import logging.handlers
 
-import scraper
 from flask import Flask, request
-
+import scraper
 
 
 # Create logger
