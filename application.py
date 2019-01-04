@@ -1,7 +1,7 @@
 import logging
 import logging.handlers
 
-from flask import Flask, request
+from flask import Flask, request, make_response
 import scraper
 
 
@@ -30,14 +30,14 @@ def parse_request():
   if request.method == 'POST':
     try:
       request_body = request.get_json()
-      logger.info("Received message: %s" % request_body)
+      logger.info("Task received: %s" % request_body)
       scraper.run()
       logger.info("Scraper ran successfully after receiving %s" % request_body)
     except:
       logger.warning('Error retrieving request body for async work.')
-    response = 'received!'
+    response = make_response('received!',200)
   else:
-    response = 'welcome!'
+    response = make_reponse('welcome!',200)
   return response
 
 # run the app.

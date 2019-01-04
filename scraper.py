@@ -13,7 +13,7 @@ logger.setLevel(logging.DEBUG)
 
 # Handler
 LOG_FILE = '/opt/python/log/scraper.log'
-handler = logging.handlers.RotatingFileHandler(LOG_FILE, maxBytes=1048576, backupCount=5)
+handler = logging.handlers.RotatingFileHandler(LOG_FILE, maxBytes=10485760, backupCount=5)
 handler.setLevel(logging.INFO)
 
 # Formatter
