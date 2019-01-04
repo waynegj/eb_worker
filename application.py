@@ -25,7 +25,7 @@ logger.addHandler(handler)
 
 # Elastic Beanstalk looks for application callable by default
 application = Flask(__name__)
-@application.route('/', methods=['POST'])
+@application.route('/', methods=['POST','GET'])
 def parse_request():
   if request.method == 'POST':
     try:
