@@ -4,6 +4,28 @@ import re
 import boto3
 import os
 
+import logging
+import logging.handlers
+
+# Create logger
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+
+# Handler
+LOG_FILE = '/opt/python/log/scraper.log'
+handler = logging.handlers.RotatingFileHandler(LOG_FILE, maxBytes=1048576, backupCount=5)
+handler.setLevel(logging.INFO)
+
+# Formatter
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+
+# Add Formatter to Handler
+handler.setFormatter(formatter)
+
+# add Handler to Logger
+logger.addHandler(handler)
+
+
 # make sure /tmp/pictures directory exists
 target_store_picture_dir = '/tmp/pictures/'
 if not os.path.exists(target_store_picture_dir):
@@ -29,21 +51,21 @@ def download_img(img_url):
     image_name = img_url.split('__')[1]
     if image_name.endswith('.jpg'):
         if os.path.exists(target_store_picture_dir + image_name):
-            print(image_name, 'already exists')
+            logger.info("%s already exists" % image_name)
         else:
-            print('downloading the image', img_url, 'save it as', image_name)
+            logger.info("downloading the image %s save it as %s" % (img_url,image_name))
             with open(target_store_picture_dir + image_name, 'wb') as f:
                 f.write(response.content)
 
 def upload_file_2_s3(img_name, s3_name, target_name):
-    print("uploading {} to {}".format(img_name, s3_name), target_name)
+    logger.info("uploading %s to %s%s" % (img_name, s3_name, target_name))
     s3.upload_file(img_name, s3_name, target_name)
 
 def run():
     for i in range(1, 100):
         downloaded_img_list = []
         web_page_url = 'https://www.che168.com/china/50_0/a0_0msdgscncgpiltocsp{}exx0/'.format(i)
-        print('preparing the image url list from', web_page_url)
+        logger.info("preparing the image url list from %s" % web_page_url)
         image_url_list = get_img_url(web_page_url)
         for url in image_url_list:
             image_name = url.split('__')[1]

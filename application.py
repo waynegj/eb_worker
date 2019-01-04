@@ -33,7 +33,7 @@ def parse_request():
       logger.info("Received message: %s" % request_body)
       scraper.run()
       logger.info("Scraper ran successfully after receiving %s" % request_body)
-    except (BadRequest):
+    except:
       logger.warning('Error retrieving request body for async work.')
     response = 'received!'
   else:
