@@ -37,7 +37,7 @@ def parse_request():
       logger.warning('Error retrieving request body for async work.')
     response = make_response('received!',200)
   else:
-    response = make_reponse('welcome!',200)
+    response = make_response('welcome!',200)
   return response
 
 # run the app.
