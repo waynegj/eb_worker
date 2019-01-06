@@ -58,7 +58,7 @@ def download_img(img_url):
                 f.write(response.content)
 
 def upload_file_2_s3(img_name, s3_name, target_name):
-    logger.info("uploading %s to %s/%s" % (img_name, s3_name, target_name))
+    logger.info("uploading %s to %s%s" % (img_name, s3_name, target_name))
     s3.upload_file(img_name, s3_name, target_name)
 
 def run():
