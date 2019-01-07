@@ -77,8 +77,7 @@ def download(url):
                     dl += len(data)
                     f.write(data)
                     done = int(50 * dl / total_length)
-                    sys.stdout.write("\r{:.0f}% [{}{}]".format((done/50.0)*100, '=' * done, ' ' * (50-done)))
-                    sys.stdout.flush()
+                    logger.info("\r{:.0f}% [{}{}]".format((done/50.0)*100, '=' * done, ' ' * (50-done)))
             logger.info('\t',filename, 'Download complete!!!')
 
 def run():
