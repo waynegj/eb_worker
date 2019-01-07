@@ -13,5 +13,5 @@ artifacts:
   files:
     - application.py
     - requirements.txt
-    - scraper.py
+    - downloader.py
     - .ebextensions/**/*

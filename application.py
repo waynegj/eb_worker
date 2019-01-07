@@ -2,7 +2,7 @@ import logging
 import logging.handlers
 
 from flask import Flask, request, make_response
-import scraper
+import downloader
 
 
 # Create logger
@@ -31,7 +31,7 @@ def parse_request():
     try:
       request_body = request.get_json()
       logger.info("Task received: %s" % request_body)
-      scraper.run()
+      downloader.run()
       logger.info("Scraper ran successfully after receiving %s" % request_body)
     except:
       logger.warning('Error retrieving request body for async work.')
