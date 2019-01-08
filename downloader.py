@@ -83,7 +83,7 @@ def download(url):
 def run():
     if not os.path.exists('/tmp/books/'):
         os.mkdir('/tmp/books/')
-    for i in range(1,50):
+    for i in range(1,5):
         get_list(list_url + str(i))
 
 if __name__ == '__main__':
