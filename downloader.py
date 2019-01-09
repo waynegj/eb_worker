@@ -64,7 +64,7 @@ def download(url):
     if ".pdf" in url:
         file = '/tmp/books/'+filename
         with open(file, 'wb') as f:
-            logger.info("Downloading {}".format(filename))
+            logger.info("Downloading %s",filename)
             response = requests.get(url, stream=True, headers=headers)
 
             total_length = response.headers.get('content-length')
