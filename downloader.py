@@ -78,7 +78,7 @@ def download(url):
                     f.write(data)
                     done = int(50 * dl / total_length)
                     logger.info("\r{:.0f}% [{}{}]".format((done/50.0)*100, '=' * done, ' ' * (50-done)))
-            logger.info('\t',filename, 'Download complete!!!')
+            logger.info('   ', filename, 'Download complete!!!')
 
 def run():
     if not os.path.exists('/tmp/books/'):
